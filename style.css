@@ -1,5 +1,21 @@
 body{
     font-family: 'Montagu Slab', serif;
 font-family: 'Shippori Antique', sans-serif;
-font-size: 24px;
+font-size: 16px;
+}
+h2{
+    margin: 10px;
+}
+.item{
+    margin: 20px;
+}
+.container{
+    display: flex;
+    justify-content: space-between;
+    display: none;
+}
+.item1{
+    font-size: 60px;
+    color: rgb(42, 105, 17);
+    font-weight: bold;
 }
