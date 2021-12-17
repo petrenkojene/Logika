@@ -1,7 +1,9 @@
+// TASK1*************************************************************************************
 let actionBoy = ["з'їв", "забрав","поклав"];
 let subjects1 = [];
 let subjects2 = [];
 let number = [1,2,3,4,5,6,7,8,9,10];
+let flag=true;
 function currentRandomFruits(elem){
  return  elem[Math.floor(Math.random()*(elem.length-1))]
 }
@@ -117,9 +119,9 @@ switch (currentSubjects1){
 }
 let random2 = currentRandomFruits(subjects2)
 let arr1 = [];
-arr1.push(currentSubjects1)
-arr1.push(random2)
-console.log(arr1)
+arr1.push(currentSubjects1);
+arr1.push(random2);
+
 
 let regApple1 = arr1[0].match(/яб/i);
 let regApple2 = arr1[1].match(/яб/i);
@@ -219,106 +221,178 @@ let random3 = currentRandom(arr1)
 let sign;
 let result;
 let answer;
+let answerMain;
 let regApple3 = currentSubjects1.match(/яб/i);
 let regApple4 = random3.match(/яб/i);
-console.log(regApple3);
-console.log(regApple4);
+let regApple5 = random2.match(/яб/i);
+
 
 let regPear3 = currentSubjects1.match(/гр/i);
 let regPear4 = random3.match(/гр/i);
+let regPear5= random2.match(/гр/i);
 
 let regOrange3 = currentSubjects1.match(/ап/i);
 let regOrange4 = random3.match(/ап/i);
+let regOrange5 = random2.match(/ап/i);
+let result1;
+
+
 switch(currentActionBoy){
     case "з'їв":
     case "забрав":
         sign = '-';
-        if(regApple3!==null && regApple4!==null){
-result =randomNumber1-randomNumber3;
-
-console.log(result)
-}
-if(regPear3!==null && regPear4!==null){
-    result =randomNumber1-randomNumber3;
-    answer =`${randomNumber1} ${sign} ${randomNumber3} + ${randomNumber2} = ${result}`;
-    console.log(result)
-    }
+if(regApple3!==null && regApple4!==null){
+    answerMinus() ;
     
-    if(regOrange3!==null && regOrange4!==null){
-        result =randomNumber1-randomNumber3;
-        answer =`${randomNumber1} ${sign} ${randomNumber3} + ${randomNumber2} = ${result}`;
-        console.log(result)
+
+}
+ if(regApple5!==null && regApple4!==null){
+                answerMinus2();
+                
+            }  
+if(regPear3!==null && regPear4!==null){
+    answerMinus() ;
+    
+
+    }
+
+    if(regPear5!==null && regPear4!==null){
+        answerMinus2();
+   
         }
-        if(result <0){
-            alert('error')
-        }else{
-            result = result+randomNumber2
-            answer =`${randomNumber1} ${sign} ${randomNumber3} + ${randomNumber2} = ${result}`;
+    
+if(regOrange3!==null && regOrange4!==null){
+       answerMinus() ;  
+
         }
+if(regOrange5!==null && regOrange4!==null){
+            answerMinus2();            
+            }  
+  
+
+
+
+if(result <0){
+    alert('Помилка \n Для подальших дій \n натисьніть на кнопку \n "Отримати відповідь"');
+            answer = "Помилка.<br>Від'ємне значення, так як хлопчик не може забрати більше ніж лежить на столі"
+            answerMain = '';
+            
         
+        }
+                
 break;
 case "поклав":
     sign = '+'
     if(regApple3!==null && regApple4!==null){
-        result =randomNumber1+randomNumber3;
-        
-        console.log(result)
+        answerPlus();
         }
-        if(regPear3!==null && regPear4!==null){
-            result =randomNumber1+randomNumber3;
-            
-            console.log(result)
+    if(regPear3!==null && regPear4!==null){
+            answerPlus();
             }
-            if(regOrange3!==null && regOrange4!==null){
-                result =randomNumber1+randomNumber3;
+    if(regOrange3!==null && regOrange4!==null){
+                answerPlus();               
                 
-                console.log(result)
                 } 
-                result = result+randomNumber2;
-                answer =`${randomNumber1} ${sign} ${randomNumber3} + ${randomNumber2} = ${result}`;
+
+    if(regApple5!==null && regApple4!==null){
+                    answerPlus1();
+                    
+                }  
+    if(regPear5!==null && regPear4!==null){
+                    answerPlus1()
+               
+                    }
+    if(regOrange5!==null && regOrange4!==null){
+                        answerPlus1()                       
+                        
+                        } 
+                      
                 break;
 }      
 
+function answerPlus(){
+    result =randomNumber1+randomNumber3;
+    result1 = result+randomNumber2;
+    answer =`${randomNumber1} ${sign} ${randomNumber3} + ${randomNumber2} = ${result1}`;
+    answerMain = `Відповідь: на столі залишилось ${result1} фруктів.`;
+}
+function answerPlus1(){
+    result =randomNumber2+randomNumber3;
+    result1 = result+randomNumber1;
+    answer =`${randomNumber1} + ${randomNumber2} ${sign} ${randomNumber3} = ${result1}`;
+    answerMain = `Відповідь: на столі залишилось ${result1} фруктів.`;
+}
+function answerMinus(){
+    result =randomNumber1-randomNumber3;
+    result1 =result+randomNumber2
+    answer =`${randomNumber1} ${sign} ${randomNumber3} + ${randomNumber2} = ${result1}`;
+    answerMain = `Відповідь: на столі залишилось ${result1} фруктів.`;
+}
+function answerMinus2(){
+    result = randomNumber2-randomNumber3;
+    result1 = randomNumber1+result;
+    answer = `${randomNumber1} + ${randomNumber2} ${sign} ${randomNumber3} = ${result1}`
+    answerMain = `Відповідь: на столі залишилось ${result1} фруктів.`;
+}
 
 
 
 // Добавление DOM элементов
+let MainElement = document.createElement('div');
+MainElement.className = 'main';
+document.body.append(MainElement);
+
+// container 1
+let container1 = document.createElement('div');
+container1.className = 'container1';
+MainElement.append(container1);
+
+let heading = document.createElement('h2');
+heading.innerHTML = "Задача1"
+container1.append(heading);
+
 let div = document.createElement('div');
 div.className = 'item';
+container1.append(div);
+
 let par = document.createElement('p');
 par.innerHTML = `На столі було ${randomNumber1} ${currentSubjects1} та ${randomNumber2} ${random2}. 
 
 Хлопчик ${currentActionBoy} ${randomNumber3} ${random3}. Скільки всього фруктів залишилося на столі. `
-document.body.append(div);
+
 div.append(par)
+
 let buttonTask1 = document.createElement('button');
 buttonTask1.textContent = 'Отримати відповідь';
-buttonTask1.className='btn btn-primary'
-div.append(buttonTask1)
+buttonTask1.className='btn btn-primary';
+div.append(buttonTask1);
+
 let answerTask = document.createElement('div');
 answerTask.className = 'container'
 div.after(answerTask);
+
 let par1 = document.createElement('p');
 let par2 = document.createElement('p');
-par1.className = 'item1'
+par1.className = 'item1';
 par1.innerHTML = answer;
-par2.innerHTML = `Відповідь: на столі залишилось ${result} фруктів.`
+par2.innerHTML = answerMain;
 
 
 answerTask.append(par1)
 answerTask.append(par2)
 
 
-let flag=true;
+
 document.querySelector('.btn').addEventListener('click',function(){
        
     if(flag){
         document.querySelector('.container').style.display = 'block';
         
-             console.log(flag)
-    }else{
+          }else{
         document.querySelector('.container').style.display = 'none';  
     }
      flag=!flag;
 })
 
+
+// TASK2****************************************************************
