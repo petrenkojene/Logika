@@ -2,11 +2,13 @@ body{
     font-family: 'Montagu Slab', serif;
 font-family: 'Shippori Antique', sans-serif;
 font-size: 16px;
+display: flex;
+flex-direction: column;
 }
 h2{
     margin: 10px;
 }
-.item{
+.item, .container2{
     margin: 20px;
 }
 .container{
