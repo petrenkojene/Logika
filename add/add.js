@@ -35,6 +35,7 @@ par1.className = "item1";
 answerTask.append(par1);
 answerTask.append(par2);
 
+// Решение
 let actionBoy = ["з'їв", "забрав", "поклав"];
 let subjects1 = [];
 let subjects2 = [];
@@ -308,7 +309,9 @@ document.querySelector(".btn").addEventListener("click", function () {
   }
   flag = !flag;
 });
-function showmuat() {
+function showmuat(item) {
+  let paragraph = document.createElement(item);
+  paragraph.innerHTML = answer;
   document.querySelector(".btn").style.display = "none";
   document.querySelector(".container").style.display = "block";
 }

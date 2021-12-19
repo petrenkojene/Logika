@@ -16,7 +16,7 @@ description.className = "descript";
 container2.append(description);
 
 let TaskButton = document.createElement("button");
-TaskButton.className = "btn btn-primary";
+TaskButton.className = "btn btn-primary btn1";
 TaskButton.innerHTML = "Отримати відповідь";
 container2.append(TaskButton);
 
@@ -25,9 +25,11 @@ answerContainer.className = "answerMain";
 container2.append(answerContainer);
 
 let par3 = document.createElement("p");
+par3.className = "answer";
 answerContainer.append(par3);
 
 let par4 = document.createElement("p");
+par4.className = "errorTask";
 answerContainer.append(par4);
 // ======================================================================
 subjects3 = [];
@@ -36,6 +38,7 @@ subjects5 = [];
 subjects6 = [];
 actionArr1 = [];
 actionArr2 = [];
+let answer1 = "";
 let randomNumber4 = currentRandom1(number);
 let randomNumber5 = currentRandom1(number);
 let randomNumber6 = currentRandom1(number);
@@ -163,5 +166,390 @@ switch (currentRandomAction1) {
     break;
 }
 currentRandomAction2 = currentRandom1(actionArr2);
-
+//  Условие задачи
 description.innerHTML = `${randomNumber4} ${currentSubjects3} ${randomNumber5} ${currentSubjects4}, ${randomNumber6} ${currentSubjects5} та ${randomNumber7} ${currentSubjects6} лежалі на столі. Хлопчик ${currentActionBoy} ${randomNumber1Active1} ${currentRandomAction1}  та ${randomNumber1Active2} ${currentRandomAction2}.<br> Скільки всього фруктів з'їв хлопчик? Скільки залишилось ${currentSubjects3} на столі? `;
+
+// Решение
+let currentRandomThings = [
+  currentSubjects3,
+  currentSubjects4,
+  currentSubjects5,
+  currentSubjects6,
+];
+let currentRandomActionThings = [currentRandomAction1, currentRandomAction2];
+
+let patternApple = /ябл/i;
+let patternOrange = /апе/i;
+let patternMandarin = /ман/i;
+let patternPencil = /олі/i;
+let resultNumber1;
+let calculationResult;
+let calculationResult2;
+
+function actionMinus(item) {
+  for (let i = 0; i < currentRandomThings.length; i++) {
+    if (
+      currentRandomActionThings[0].match(item) !== null &&
+      item === patternPencil
+    ) {
+      document.querySelector(".errorTask").innerHTML =
+        "Помилка. Не можливо з'їсти олівці.";
+      document.querySelector(".answer").style.display = "none";
+    } else {
+      if (
+        currentRandomThings[i].match(item) !== null &&
+        currentRandomActionThings[0].match(item) !== null
+      ) {
+        let index = currentRandomThings.indexOf(currentRandomThings[i]);
+
+        switch (index) {
+          case 0:
+            calculationResult = randomNumber4 - randomNumber1Active1;
+
+            break;
+          case 1:
+            calculationResult = randomNumber5 - randomNumber1Active1;
+
+            break;
+          case 2:
+            calculationResult = randomNumber6 - randomNumber1Active1;
+
+            break;
+          case 3:
+            calculationResult = randomNumber7 - randomNumber1Active1;
+
+            break;
+        }
+
+        if (calculationResult < 0) {
+          document.querySelector(".answer").style.display = "none";
+          document.querySelector(".errorTask").innerHTML =
+            "Помилка.<br>Від'ємне значення, так як хлопчик не може забрати більше ніж лежить на столі";
+        }
+      }
+    }
+  }
+}
+
+function actionMinus3(item) {
+  for (let i = 0; i < currentRandomThings.length; i++) {
+    if (
+      currentRandomThings[i].match(item) !== null &&
+      currentRandomActionThings[0].match(item) !== null
+    ) {
+      let index = currentRandomThings.indexOf(currentRandomThings[i]);
+
+      switch (index) {
+        case 0:
+          calculationResult = randomNumber4 - randomNumber1Active1;
+
+          break;
+        case 1:
+          calculationResult = randomNumber5 - randomNumber1Active1;
+
+          break;
+        case 2:
+          calculationResult = randomNumber6 - randomNumber1Active1;
+
+          break;
+        case 3:
+          calculationResult = randomNumber7 - randomNumber1Active1;
+
+          break;
+      }
+
+      if (calculationResult < 0) {
+        document.querySelector(".answer").style.display = "none";
+        document.querySelector(".errorTask").innerHTML =
+          "Помилка.<br>Від'ємне значення, так як хлопчик не може забрати більше ніж лежить на столі";
+      }
+    }
+  }
+}
+
+function actionPlus(item) {
+  for (let i = 0; i < currentRandomThings.length; i++) {
+    if (
+      currentRandomThings[i].match(item) !== null &&
+      currentRandomActionThings[0].match(item) !== null
+    ) {
+      let index = currentRandomThings.indexOf(currentRandomThings[i]);
+
+      switch (index) {
+        case 0:
+          calculationResult = randomNumber4 + randomNumber1Active1;
+
+          break;
+        case 1:
+          calculationResult = randomNumber5 + randomNumber1Active1;
+
+          break;
+        case 2:
+          calculationResult = randomNumber6 + randomNumber1Active1;
+
+          break;
+        case 3:
+          calculationResult = randomNumber7 + randomNumber1Active1;
+
+          break;
+      }
+    }
+  }
+}
+function actionMinus2(item) {
+  for (let i = 0; i < currentRandomThings.length; i++) {
+    if (
+      currentRandomThings[i].match(item) !== null &&
+      currentRandomActionThings[1].match(item) !== null
+    ) {
+      let index = currentRandomThings.indexOf(currentRandomThings[i]);
+
+      switch (index) {
+        case 0:
+          calculationResult2 = randomNumber4 - randomNumber1Active2;
+
+          break;
+        case 1:
+          calculationResult2 = randomNumber5 - randomNumber1Active2;
+
+          break;
+        case 2:
+          calculationResult2 = randomNumber6 - randomNumber1Active2;
+
+          break;
+        case 3:
+          calculationResult2 = randomNumber7 - randomNumber1Active2;
+
+          break;
+      }
+
+      if (calculationResult2 < 0) {
+        document.querySelector(".answer").style.display = "none";
+        document.querySelector(".errorTask").innerHTML =
+          "Помилка.<br>Від'ємне значення, так як хлопчик не може забрати більше ніж лежить на столі";
+      }
+    }
+  }
+}
+function actionMinus4(item) {
+  for (let i = 0; i < currentRandomThings.length; i++) {
+    if (
+      currentRandomActionThings[1].match(item) !== null &&
+      item === patternPencil
+    ) {
+      document.querySelector(".errorTask").innerHTML =
+        "Помилка. Не можливо з'їсти олівці.";
+      document.querySelector(".answer").style.display = "none";
+    } else {
+      if (
+        currentRandomThings[i].match(item) !== null &&
+        currentRandomActionThings[1].match(item) !== null
+      ) {
+        let index = currentRandomThings.indexOf(currentRandomThings[i]);
+
+        switch (index) {
+          case 0:
+            calculationResult2 = randomNumber4 - randomNumber1Active2;
+
+            break;
+          case 1:
+            calculationResult2 = randomNumber5 - randomNumber1Active2;
+
+            break;
+          case 2:
+            calculationResult2 = randomNumber6 - randomNumber1Active2;
+
+            break;
+          case 3:
+            calculationResult2 = randomNumber7 - randomNumber1Active2;
+
+            break;
+        }
+        if (calculationResult2 < 0) {
+          document.querySelector(".answer").style.display = "none";
+          document.querySelector(".errorTask").innerHTML =
+            "Помилка.<br>Від'ємне значення, так як хлопчик не може забрати більше ніж лежить на столі";
+        }
+      }
+    }
+  }
+}
+function actionPlus2(item) {
+  for (let i = 0; i < currentRandomThings.length; i++) {
+    if (
+      currentRandomThings[i].match(item) !== null &&
+      currentRandomActionThings[1].match(item) !== null
+    ) {
+      let index = currentRandomThings.indexOf(currentRandomThings[i]);
+
+      switch (index) {
+        case 0:
+          calculationResult2 = randomNumber4 + randomNumber1Active2;
+
+          break;
+        case 1:
+          calculationResult2 = randomNumber5 + randomNumber1Active2;
+
+          break;
+        case 2:
+          calculationResult2 = randomNumber6 + randomNumber1Active2;
+
+          break;
+        case 3:
+          calculationResult2 = randomNumber7 + randomNumber1Active2;
+
+          break;
+      }
+    }
+  }
+}
+
+switch (currentActionBoy) {
+  case "з'їв":
+    actionMinus(patternApple);
+    actionMinus(patternOrange);
+    actionMinus(patternMandarin);
+    actionMinus(patternPencil);
+
+    actionMinus4(patternApple);
+    actionMinus4(patternOrange);
+    actionMinus4(patternMandarin);
+    actionMinus4(patternPencil);
+    break;
+
+  case "забрав":
+    actionMinus3(patternApple);
+    actionMinus3(patternOrange);
+    actionMinus3(patternMandarin);
+    actionMinus3(patternPencil);
+
+    actionMinus2(patternApple);
+    actionMinus2(patternOrange);
+    actionMinus2(patternMandarin);
+    actionMinus2(patternPencil);
+
+    break;
+  case "поклав":
+    actionPlus(patternApple);
+    actionPlus(patternOrange);
+    actionPlus(patternMandarin);
+    actionPlus(patternPencil);
+
+    actionPlus2(patternApple);
+    actionPlus2(patternOrange);
+    actionPlus2(patternMandarin);
+    actionPlus2(patternPencil);
+
+    break;
+}
+let totalResult;
+if (currentRandomActionThings[1].match(patternPencil) !== null) {
+  totalResult = randomNumber1Active1;
+} else if (currentRandomActionThings[0].match(patternPencil) !== null) {
+  totalResult = randomNumber1Active2;
+} else {
+  totalResult = randomNumber1Active1 + randomNumber1Active2;
+}
+
+let fruitall = "";
+function showFruit(elem, item) {
+  switch (elem) {
+    case 1:
+      if (item.match(patternApple) != null) {
+        item = "яблукo";
+      } else if (item.match(patternOrange) != null) {
+        item = "апельсин";
+      } else if (item.match(patternMandarin) != null) {
+        item = "мандарин";
+      } else if (item.match(patternMandarin) != null) {
+        item = "олівець";
+      }
+      break;
+    case 2:
+    case 3:
+    case 4:
+      if (item.match(patternApple) !== null) {
+        item = "яблука";
+      } else if (item.match(patternOrange) != null) {
+        item = "апельсина";
+      } else if (item.match(patternMandarin) != null) {
+        item = "мандарина";
+      } else if (item.match(patternMandarin) != null) {
+        item = "олівеця";
+      }
+      break;
+    case 5:
+    case 6:
+    case 7:
+    case 8:
+    case 9:
+    case 10:
+    case 11:
+    case 12:
+    case 13:
+    case 14:
+    case 15:
+    case 16:
+    case 17:
+    case 18:
+    case 19:
+    case 20:
+      if (item.match(patternApple) !== null) {
+        item = "яблук";
+      } else if (item.match(patternOrange) != null) {
+        item = "апельсинів";
+      } else if (item.match(patternMandarin) != null) {
+        item = "мандаринів";
+      } else if (item.match(patternMandarin) != null) {
+        item = "олівеців";
+      }
+      break;
+  }
+  return item;
+}
+switch (totalResult) {
+  case 1:
+    fruitall = "фрукт";
+
+    break;
+  case 2:
+  case 3:
+  case 4:
+    fruitall = "фрукта";
+
+    break;
+  case 5:
+  case 6:
+  case 7:
+  case 8:
+  case 9:
+  case 10:
+  case 11:
+  case 12:
+  case 13:
+  case 14:
+  case 15:
+  case 16:
+  case 17:
+  case 18:
+  case 19:
+  case 20:
+    fruitall = "фруктів";
+
+    break;
+}
+
+answer1 = `Хлопчик ${currentActionBoy} ${totalResult} ${fruitall}.<br> На столі залишилось ${calculationResult} ${showFruit(
+  calculationResult,
+  currentRandomAction1
+)}. `;
+par3.innerHTML = answer1;
+let flag1 = true;
+document.querySelector(".btn1").addEventListener("click", function () {
+  if (flag1) {
+    document.querySelector(".answerMain").style.display = "block";
+  } else {
+    document.querySelector(".answerMain").style.display = "none";
+  }
+  flag1 = !flag1;
+});
