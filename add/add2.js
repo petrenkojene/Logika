@@ -204,7 +204,7 @@ function fruitsQuestion(item, elem) {
 }
 
 //  Условие задачи
-description.innerHTML = `${randomNumber4} ${currentSubjects3} ${randomNumber5} ${currentSubjects4}, ${randomNumber6} ${currentSubjects5} та ${randomNumber7} ${currentSubjects6} лежалі на столі. Хлопчик ${currentActionBoy} ${randomNumber1Active1} ${currentRandomAction1}  та ${randomNumber1Active2} ${currentRandomAction2}.<br> Скільки всього фруктів з'їв хлопчик? Скільки ${fruitsQuestion(
+description.innerHTML = `${randomNumber4} ${currentSubjects3} ${randomNumber5} ${currentSubjects4}, ${randomNumber6} ${currentSubjects5} та ${randomNumber7} ${currentSubjects6} лежалі на столі. Хлопчик ${currentActionBoy} ${randomNumber1Active1} ${currentRandomAction1}  та ${randomNumber1Active2} ${currentRandomAction2}.<br> Скільки всього фруктів ${currentActionBoy} хлопчик? Скільки ${fruitsQuestion(
   currentRandomAction1,
   currentTaskSubject
 )} залишилось  на столі? `;
