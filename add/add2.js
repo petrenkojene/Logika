@@ -166,8 +166,6 @@ switch (currentRandomAction1) {
     break;
 }
 currentRandomAction2 = currentRandom1(actionArr2);
-//  Условие задачи
-description.innerHTML = `${randomNumber4} ${currentSubjects3} ${randomNumber5} ${currentSubjects4}, ${randomNumber6} ${currentSubjects5} та ${randomNumber7} ${currentSubjects6} лежалі на столі. Хлопчик ${currentActionBoy} ${randomNumber1Active1} ${currentRandomAction1}  та ${randomNumber1Active2} ${currentRandomAction2}.<br> Скільки всього фруктів з'їв хлопчик? Скільки залишилось ${currentSubjects3} на столі? `;
 
 // Решение
 let currentRandomThings = [
@@ -185,6 +183,31 @@ let patternPencil = /олі/i;
 let resultNumber1;
 let calculationResult;
 let calculationResult2;
+let currentTaskSubject = "";
+function fruitsQuestion(item, elem) {
+  if (item.match(patternApple) !== null) {
+    elem = "яблук";
+    console.log(elem);
+  } else if (item.match(patternOrange) !== null) {
+    elem = "апельсин";
+    console.log(elem);
+  } else if (item.match(patternMandarin) !== null) {
+    elem = "мандарин";
+    console.log(elem);
+  } else if (item.match(patternPencil) !== null) {
+    elem = "олівців";
+    console.log(elem);
+  }
+  console.log(elem);
+  console.log(item);
+  return elem;
+}
+
+//  Условие задачи
+description.innerHTML = `${randomNumber4} ${currentSubjects3} ${randomNumber5} ${currentSubjects4}, ${randomNumber6} ${currentSubjects5} та ${randomNumber7} ${currentSubjects6} лежалі на столі. Хлопчик ${currentActionBoy} ${randomNumber1Active1} ${currentRandomAction1}  та ${randomNumber1Active2} ${currentRandomAction2}.<br> Скільки всього фруктів з'їв хлопчик? Скільки ${fruitsQuestion(
+  currentRandomAction1,
+  currentTaskSubject
+)} залишилось  на столі? `;
 
 function actionMinus(item) {
   for (let i = 0; i < currentRandomThings.length; i++) {
